@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+from player import Player
 from constants import *
 
 
@@ -14,6 +15,10 @@ def main():
     #restrict fps
     clock = pygame.time.Clock()
     dt = 0
+    
+    #initiate player
+    player = Player(x=(SCREEN_WIDTH / 2), y=(SCREEN_HEIGHT/2))
+    
     #initiate game loop
     while True:
         #enable X button functionality
@@ -22,7 +27,11 @@ def main():
                 return
 
         screen.fill('black')
+        player.draw(screen)
         pygame.display.flip()
+
+
+        
 
         #fps restriction
         delta_time = clock.tick(60)
