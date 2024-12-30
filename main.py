@@ -9,12 +9,11 @@ from constants import *
 def main():
     #initalise pygame
     pygame.init()
-    print("Starting asteroids!")
-    #Print out the SCREEN_WIDTH and SCREEN_HEIGHT values when main.py is run. Use the following format:
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
     #create gui window
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    #restrict fps
+    clock = pygame.time.Clock()
+    dt = 0
     #initiate game loop
     while True:
         #enable X button functionality
@@ -24,6 +23,10 @@ def main():
 
         screen.fill('black')
         pygame.display.flip()
+
+        #fps restriction
+        delta_time = clock.tick(60)
+        dt = delta_time / 1000
     
 
 #ensure only runs if file is run
